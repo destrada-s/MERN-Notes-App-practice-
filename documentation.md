@@ -32,3 +32,5 @@ npm i -D eslint
 npx eslint --init
 # install package to be able to use config file .env
 npm i dotenv
+# object modelling for MQL (MONGODB QUERY LANGUAGE)
+npm i mongoose
