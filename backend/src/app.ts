@@ -13,9 +13,9 @@ app.get("/", async (req, res, next) => {
     next(error);
   }
 });
-
+//como no se pasa un parametro cuando no encuentra Rout entra aqui
 app.use((req, res, next) => {
-  next(Error("Enpoint not found"));
+  next(Error("pokemon"));
 });
 
 app.use((error: unknown, req: Request, res: Response, next: NextFunction) => {
