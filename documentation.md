@@ -34,3 +34,5 @@ npx eslint --init
 npm i dotenv
 # object modelling for MQL (MONGODB QUERY LANGUAGE)
 npm i mongoose
+# install package that prints a error log if a env var is invalid or not setted
+npm i envalid
