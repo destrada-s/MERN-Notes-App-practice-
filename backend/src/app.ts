@@ -1,29 +1,41 @@
 import "dotenv/config";
 import express, { NextFunction, Request, Response } from "express";
-import NoteModel from "./models/note";
+import noteRoutes from "./routes/notes"
+import morgan from "morgan"
+import createHttpError, { isHttpError } from "http-errors";
+
 const app = express();
 
-app.get("/", async (req, res, next) => {
-  try {
-    //throw Error("Bazinga!");
-    const notes = await NoteModel.find().exec();
-    res.status(200).json(notes);
-    //res.send("Gello World!");
-  } catch (error) {
-    next(error);
-  }
-});
+app.use(morgan('dev'));
+
+app.use(express.json());
+
+app.use("/api/notes", noteRoutes);
+
 //como no se pasa un parametro cuando no encuentra Rout entra aqui
 app.use((req, res, next) => {
-  next(Error("pokemon"));
+  next(createHttpError(404, "Endpoint not found")); // Pass the error to the next middleware
 });
 
 app.use((error: unknown, req: Request, res: Response, next: NextFunction) => {
-  console.error(error);
+    console.error(error);
     let error_message = "An unknown error occurred";
-    if (error instanceof Error) 
+    let status_code = 500;
+    let default_error = 0;
+    if (error instanceof Error)
+    {
+      default_error = 1;
+    }
+    if (isHttpError(error)) 
+    {
+      default_error = 0
+      status_code = error.status;
       error_message = error.message;
-    res.status(500).json({error: error_message});
+    }
+    if (default_error == 0)
+      res.status(status_code).json({error: error_message});
+    else
+      res.status(status_code).json({error: error});
   });
 
 export default app;

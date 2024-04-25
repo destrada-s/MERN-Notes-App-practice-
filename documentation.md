@@ -36,3 +36,9 @@ npm i dotenv
 npm i mongoose
 # install package that prints a error log if a env var is invalid or not setted
 npm i envalid
+# install package morgan to log requests to different endpoints  
+npm i morgan
+npm i --save-dev @types/morgan
+# install package http-errors to send errors with the status you want
+ npm i http-errors
+ npm i -D @types/http-errors
