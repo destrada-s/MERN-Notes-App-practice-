@@ -42,3 +42,6 @@ npm i --save-dev @types/morgan
 # install package http-errors to send errors with the status you want
  npm i http-errors
  npm i -D @types/http-errors
+# in root folder
+npm install -g create-react-app
+npx create-react-app frontend --template typescript
