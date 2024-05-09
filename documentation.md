@@ -45,3 +45,4 @@ npm i --save-dev @types/morgan
 # in root folder
 npm install -g create-react-app
 npx create-react-app frontend --template typescript
+npm install react-bootstrap bootstrap
