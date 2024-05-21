@@ -1,6 +1,6 @@
 export function formatDate(dateString: string)
 {
-    console.log("hello");
+    //console.log("hello");
     return new Date(dateString).toLocaleString("es-ES", {
         year: "numeric",
         month: "short",

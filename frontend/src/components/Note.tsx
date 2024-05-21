@@ -20,7 +20,7 @@ const Note = (({ note_comp, className }: NoteProps) => {
     if (updatedAt > createdAt)
         created_updated_text = "Updated: " + formatDate(updatedAt);
     else
-        created_updated_text = "Updated: " + formatDate(createdAt);
+        created_updated_text = "Created: " + formatDate(createdAt);
 
     return (
         <Card className={`${styles.note_card} ${className}`}>
