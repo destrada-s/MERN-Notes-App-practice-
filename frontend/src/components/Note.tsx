@@ -1,8 +1,9 @@
-import styles from "../styles/Note.module.css"
+import styles from "../styles/Note.module.css";
+import styleUtils from "../styles/utils.module.css";
 import { Card } from "react-bootstrap";
 import { Note as NoteModel} from "../models/note";
 import { formatDate } from "../utils/formatDate";
-
+import { MdDelete } from "react-icons/md";
 interface NoteProps {
     note_comp: NoteModel,
     className?: string,
@@ -25,8 +26,12 @@ const Note = (({ note_comp, className }: NoteProps) => {
     return (
         <Card className={`${styles.note_card} ${className}`}>
             <Card.Body className={styles.card_body}>
-                <Card.Title>
-                    {title}
+                <Card.Title
+                className={styleUtils.flexCenter}>
+                    {title} 
+                    <MdDelete 
+                    className="text-muted ms-auto"
+                    />
                 </Card.Title>
                 <Card.Text className={styles.note_text}>
                     {text}
