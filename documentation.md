@@ -50,3 +50,6 @@ npm install react-bootstrap bootstrap
 npm i react-hook-form
 # for icons
 npm install react-icons --save
+# encripting passwords
+npm i bcrypt
+npm i -D @types/bcrypt
