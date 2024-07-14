@@ -4,12 +4,28 @@ import noteRoutes from "./routes/notes"
 import userRoutes from "./routes/users"
 import morgan from "morgan"
 import createHttpError, { isHttpError } from "http-errors";
+import session from "express-session";
+import env from "./util/validate_env";
+import MongoStore from "connect-mongo";
 
 const app = express();
 
 app.use(morgan('dev'));
 
 app.use(express.json());
+
+app.use(session({
+  secret: env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    maxAge:60*60*100,
+  },
+  rolling: true,
+  store: MongoStore.create({
+    mongoUrl: env.MONGO_CONNECTION_STRING
+  })
+}));
 
 app.use("/api/users", userRoutes);
 app.use("/api/notes", noteRoutes);

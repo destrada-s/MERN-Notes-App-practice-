@@ -53,3 +53,12 @@ npm install react-icons --save
 # encripting passwords
 npm i bcrypt
 npm i -D @types/bcrypt
+# express sessions like Sessions in PHP (I think)
+npm install express-session
+npm i -D @types/express-session
+# we need somewhere to save our session it can be done with redis and also in our mongodb server 
+npm i connect-mongo
+# pq nosotros en php no guardamos la session en la bbdd? se hace automaticamente con PHP (apache o algo)?
+
+# Front end is able to call easily to the back with a relitive path because in package.json there is a value called "proxy"
+# tells the development server to proxy any unknown requests (requests that don't match a static file) to the backend
